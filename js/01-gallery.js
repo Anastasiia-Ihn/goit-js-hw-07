@@ -45,7 +45,7 @@ if (evt.target === evt.currentTarget) {
   if (event.code === 'Escape') {    // key?????
    
     instance.close()
-   document.removeEventListener("keydown", onDownEsc) } //  знімаємо слухача на Escape
+   document.removeEventListener("keydown", onPressEsc) } //  знімаємо слухача на Escape
 
 }
   

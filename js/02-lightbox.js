@@ -23,11 +23,16 @@ function createCardsMarkup(arr) {
 }
 
 function handlerClickCard(evt) { 
-evt.preventDefault()   
-if (evt.target === evt.currentTarget) {
+    evt.preventDefault()   
+    console.log(evt.target);
+    console.log('gallery__image');
+    console.log(evt.currentTarget);
+    console.log(evt.target.classList.value !== 'gallery__image');
+if (evt.target.classList.value !== 'gallery__image') {
   return 
 } 
-    let lightbox = new SimpleLightbox('.gallery a', { 'captionsData': 'alt', 'captionDelay': 250,});
+    let lightbox = new SimpleLightbox('.gallery a',  { 'captionsData': 'alt', 'captionDelay': 250});
 
-   
+    lightbox.on('show.simplelightbox')
+    galleryEl.removeEventListener('click', handlerClickCard)
 }

@@ -9,6 +9,9 @@ const galleryEl = document.querySelector('.gallery')
 galleryEl.insertAdjacentHTML('afterbegin', createCardsMarkup(galleryItems))
 galleryEl.addEventListener('click', handlerClickCard)
 
+// ств галереї з бібліотеки
+let lightbox = new SimpleLightbox('.gallery a',  { 'captionsData': 'alt', 'captionDelay': 250});
+
 function createCardsMarkup(arr) {
      return arr.map(({preview, original, description}) => `
 <li class="gallery__item">
@@ -22,17 +25,15 @@ function createCardsMarkup(arr) {
 </li>`).join('')
 }
 
+
 function handlerClickCard(evt) { 
     evt.preventDefault()   
-    console.log(evt.target);
-    console.log('gallery__image');
-    console.log(evt.currentTarget);
-    console.log(evt.target.classList.value !== 'gallery__image');
+  
 if (evt.target.classList.value !== 'gallery__image') {
   return 
-} 
-    let lightbox = new SimpleLightbox('.gallery a',  { 'captionsData': 'alt', 'captionDelay': 250});
-
+    } 
+    // виклик галереї
     lightbox.on('show.simplelightbox')
+    // зачистка слухача
     galleryEl.removeEventListener('click', handlerClickCard)
 }
